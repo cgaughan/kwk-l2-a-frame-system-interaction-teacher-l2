@@ -68,6 +68,7 @@ AFRAME.registerSystem('game', {
     this.player.el.components.sound.playSound()
     this.removeAllBalls()
     // TODO: spawn a new ball!
+    this.spawnBall()
   },
 
   newBallShouldSpawn: function() {
@@ -78,9 +79,9 @@ AFRAME.registerSystem('game', {
 
   // this runs constantly!
   tick: function() {
-    // if (newBallShouldSpawn()) {
-    //   this.spawnBall()
-    // }
+    if (newBallShouldSpawn()) {
+       this.spawnBall()
+     }
     this.balls.forEach(ball => {
       const collided = this.checkPlayerCollision(ball)
       if (collided) {
